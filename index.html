@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- LEAFLET CSS -->
+
+<link
+rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <title>BioVerse GU</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Explore</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li>
+    <a href="#">
+        <i class="fa-solid fa-language"></i>
+    </a>
+</li>
+
+<li>
+    <a href="javascript:void(0);" onclick="toggleSearch()">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</a>
+</li>
+            <li><a href="#">About</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Explore the Biodiversity of Gauhati University</h1>
+
+        <p>
+            Discover trees, leaves, flowers, and biodiversity records
+            documented across the university campus.
+        </p>
+
+        <button>
+            Explore Trees
+        </button>
+
+        <!-- HERO SEARCH TOOL -->
+
+        <div class="gbif-search">
+
+            <div class="search-tabs">
+
+                <span>Species</span>
+                <span>Trees</span>
+                <span>Flowers</span>
+                <span>Leaves</span>
+
+            </div>
+
+            <div class="search-main">
+
+                <input type="text"
+                placeholder="Search biodiversity records...">
+
+                <button>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ABOUT SECTION -->
+
+    <section class="about-section">
+
+    <h2>What is BioVerse GU?</h2>
+
+    <div class="about-container">
+
+        <!-- LEFT IMAGE -->
+
+        <div class="about-image">
+
+            <img src="images/bioverse-illustration.png" alt="BioVerse Illustration">
+
+        </div>
+
+        <!-- RIGHT TEXT -->
+
+        <div class="about-text">
+
+            <p>
+                BioVerse GU is a digital biodiversity documentation platform
+                developed for Gauhati University. The website aims to preserve
+                and organize information about trees, leaves, flowers, and
+                biodiversity found across the university campus.
+            </p>
+
+            <p>
+                The platform supports biodiversity awareness, environmental
+                education, and species exploration through an interactive
+                web-based system.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- FLOATING SEARCH POPUP -->
+
+<div class="search-popup" id="searchPopup">
+
+    <div class="popup-content">
+
+    <div class="popup-header">
+
+        <h3>Search</h3>
+
+        <span onclick="toggleSearch()">&times;</span>
+
+    </div>
+
+        <!-- TOP TABS -->
+
+        
+
+        <!-- SEARCH INPUT -->
+
+        <div class="popup-search">
+
+            <input type="text"
+            placeholder="Search biodiversity records...">
+
+            <button>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- FEATURES SECTION -->
+
+<section class="features-section">
+
+    <h2>With BioVerse GU, you can:</h2>
+
+    <div class="features-container">
+
+        <!-- CARD 1 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-tree"></i>
+            </div>
+
+            <h3>Explore Campus Biodiversity</h3>
+
+            <p>
+                Discover tree species and biodiversity records
+                across Gauhati University campus.
+            </p>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-seedling"></i>
+            </div>
+
+            <h3>Scientific Information</h3>
+
+            <p>
+                Access scientific names, classifications,
+                and plant descriptions.
+            </p>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-water"></i>
+            </div>
+
+            <h3>Natural Ecosystems</h3>
+
+            <p>
+                Explore wetlands and ecological regions
+                supporting biodiversity.
+            </p>
+
+        </div>
+
+        <!-- CARD 4 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-camera"></i>
+            </div>
+
+            <h3>Document Biodiversity</h3>
+
+            <p>
+                Upload and organize biodiversity
+                photographs and records.
+            </p>
+
+        </div>
+
+        <!-- CARD 5 -->
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+
+            <h3>Conservation Awareness</h3>
+
+            <p>
+                Promote environmental awareness
+                and biodiversity conservation.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- LEAFLET JS -->
+
+<script
+src="https://unpkg.com/leaflet/dist/leaflet.js">
+</script>
+<!-- BIODIVERSITY MAP -->
+
+<section class="map-section">
+
+    <h2>Biodiversity Map of Gauhati University</h2>
+
+    <p>
+        Explore biodiversity hotspots, wetlands,
+        forest regions, and tree-rich zones across campus.
+    </p>
+
+    <!-- MAP -->
+
+    <div id="map"></div>
+
+</section>
+<!-- STATS SECTION -->
+
+<section class="stats-section">
+
+    <div class="stats-container">
+
+        <!-- BOX 1 -->
+
+        <div class="stat-box">
+
+            <h2>75+</h2>
+
+            <p>
+                Acres of wetlands supporting
+                biodiversity at Gauhati University
+            </p>
+
+        </div>
+
+        <!-- BOX 2 -->
+
+        <div class="stat-box">
+
+            <h2>91+</h2>
+
+            <p>
+                Acres of natural forest
+                and green ecosystems
+            </p>
+
+        </div>
+
+        <!-- BOX 3 -->
+
+        <div class="stat-box">
+
+            <h2>100+</h2>
+
+            <p>
+                Tree and plant species
+                planned for documentation
+            </p>
+
+        </div>
+
+        <!-- BOX 4 -->
+
+        <div class="stat-box">
+
+            <h2>1 Campus</h2>
+
+            <p>
+                Dedicated biodiversity
+                exploration platform for GU
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WORKFLOW SECTION -->
+
+<section class="workflow-section">
+
+    <div class="workflow-container">
+
+        <!-- STEP 1 -->
+
+        <div class="workflow-box">
+
+            <h1>1</h1>
+
+            <div class="workflow-text">
+
+                <h2>
+                    Search
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </h2>
+
+                <p>
+                    Search biodiversity records using
+                    tree names, scientific names,
+                    or plant classifications.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- STEP 2 -->
+
+        <div class="workflow-box">
+
+            <h1>2</h1>
+
+            <div class="workflow-text">
+
+                <h2>
+                    Explore
+                    <i class="fa-solid fa-leaf"></i>
+                </h2>
+
+                <p>
+                    Explore scientific information,
+                    images, and biodiversity details
+                    across Gauhati University.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- STEP 3 -->
+
+        <div class="workflow-box">
+
+            <h1>3</h1>
+
+            <div class="workflow-text">
+
+                <h2>
+                    Document
+                    <i class="fa-solid fa-book-open"></i>
+                </h2>
+
+                <p>
+                    Document and organize species
+                    observations and biodiversity
+                    information collected on campus.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
